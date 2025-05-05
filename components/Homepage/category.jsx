@@ -1,13 +1,21 @@
 'use client'
 
 import { useFetch } from "../useFetch";
+import 'swiper/css'
+import { Navigation,Pagination } from 'swiper/modules'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/bundle'
+import 'swiper/css/autoplay'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 const Category = ({tab}) => {
-    const {product,isPending} = useFetch('https://api.escuelajs.co/api/v1/categories')    
+    const {product,isPending} = useFetch('https://api.escuelajs.co/api/v1/categories')
     return ( 
         <div className="flex items-center justify-center ">
              {isPending ? (
                 <div className="w-full flex items-center justify-center flex-wrap gap-5 ">
+                    <>
                     <div onClick={()=>tab('')} className={`cursor-pointer `}>
                         <div className={`flex flex-col rounded-lg border-white border py-2 px-3 items-center justify-center gap-5 `}>
                             <p className="font-semibold w-[50px] text-xs sm:text-sm sm:w-[100px] text-center ">All</p>
@@ -20,6 +28,16 @@ const Category = ({tab}) => {
                                 </div>
                         </div>
                     ))}
+                    </>
+                <Swiper 
+                 loop={true} modules={[Navigation,Pagination]} spaceBetween={0} slidesPerView={1} pagination={{clickable:true}} autoplay={{delay: 200 }}
+                className="w-full h-[200px]">
+                    {product?.map((item) => (
+                        <SwiperSlide key={item.id} className="w-full h-[200px] relative">
+                            <img src={item?.images} alt="" className="w-full h-full object-cover" />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
                 </div>
             ):(
                 <div className="w-full h-[20vw] flex items-center justify-center">

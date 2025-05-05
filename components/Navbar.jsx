@@ -30,9 +30,10 @@ const Navbar = ({session}) => {
                     Favorites
                 </Link>
             </div>
-            <div className="flex ">
+            <Link href={`/${session?.user?.username}`} className="flex items-center justify-center ">
+                {console.log(session)}
                 <img src={session?.user?.image} alt="" className="flex w-[80px] h-[50px] object-cover rounded-full" />
-            </div>
+            </Link>
         </motion.div>
      );
 }

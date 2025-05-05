@@ -4,6 +4,7 @@ import { AppContext } from "./context";
 import { FaMinus, FaPlus, FaTimes } from "react-icons/fa";
 import Paystack from "./paystack";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Cart = ({session}) => {
     const {cart,totalPrice,delItem,setCart,addQuantity,removeQuantity} = useContext(AppContext)
@@ -12,11 +13,12 @@ const Cart = ({session}) => {
         <div className=" relative h-full p-3 flex flex-col items-center justify-center ">
             {show && <Paystack email={session?.user?.email} amount={totalPrice} show={setShow} /> }
             {cart.length <= 0 ? (
-                <motion.div className="h-[500px] flex items-center justify-center "
+                <motion.div className="h-[500px] flex flex-col items-center justify-center "
                 initial={{opacity:0}}
                 animate={{opacity: 1}}
                 transition={{duration: 1}}
                 >
+                    <Image width={300} height={300} src='/illustration-empty-cart.svg' alt="" className="" />
                     <h1 className="text-3xl text-center text-gray-600">Your cart is empty</h1>
                 </motion.div>
             ):(

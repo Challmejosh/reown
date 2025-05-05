@@ -1,5 +1,5 @@
 import { FaHeart, FaPlus } from "react-icons/fa";
-
+import { motion } from "framer-motion";
 const HomeProduct = ({product,isPending}) => {
 
     return ( 
@@ -13,7 +13,9 @@ const HomeProduct = ({product,isPending}) => {
                 </div>
                 <div className="flex items-start justify-center flex-col gap-2 ">
                     <div className="w-full flex items-center justify-center ">
-                        <img src={item?.category?.image} alt="" className="w-full h-[120px] " />
+                        <motion.img 
+                        whileHover={{scale:1.1}}
+                        src={item?.category?.image} alt="" className="w-full h-[120px] " />
                     </div>
                     <div className="flex flex-col items-start ">
                         <p className="text-xs line-clamp-1 font-semibold">{item?.title}</p>

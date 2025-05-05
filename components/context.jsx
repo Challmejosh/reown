@@ -2,17 +2,78 @@
 'use client'
 import { createContext, useState } from "react";
 import { useFetch } from "./useFetch";
-
+export const product = {
+    title: '',
+    image: '',
+    description: '',
+    author: '',
+    quantity: 2,
+    amount: 300,
+    sale: false,
+}
 const AppContext = createContext()
 
 const Context = ({children})=>{
     const {product,isPending,setProduct} = useFetch("https://api.escuelajs.co/api/v1/products")
     const [cart,setCart] = useState([])
     const [favorite,setFavorite] = useState([])
+    const [buyProduct,setBuyProduct] = useState([
+        {  title: 'Bags',
+            image: '',
+            description: 'For fashion',
+            author: 'Joshua',
+            quantity: 2,
+            amount: 300,
+            sale: false,
+        },
+        {  title: 'Bags',
+            image: '',
+            description: 'For fashion',
+            author: 'Joshua',
+            quantity: 2,
+            amount: 300,
+            sale: false,
+        },
+        {  title: 'Bags',
+            image: '',
+            description: 'For fashion',
+            author: 'Joshua',
+            quantity: 2,
+            amount: 300,
+            sale: false,
+        },
+        {  title: 'Bags',
+            image: '',
+            description: 'For fashion',
+            author: 'Joshua',
+            quantity: 2,
+            amount: 300,
+            sale: false,
+        },
+        {  title: 'Bags',
+            image: '',
+            description: 'For fashion',
+            author: 'Joshua',
+            quantity: 2,
+            amount: 300,
+            sale: false,
+        },
+        {  title: 'Bags',
+            image: '',
+            description: 'For fashion',
+            author: 'Joshua',
+            quantity: 2,
+            amount: 300,
+            sale: false,
+        },
+    ])
+    const [sellProduct,setSellProduct] = useState([])
     const [query,setQuery] = useState('')
     const [category,setCategory] = useState('')
     const [cartId,setCartId] = useState(null)
     const [cartExist,setCartExist] = useState(null)
+    const [marketTab,setMarketTab] = useState('Buy')
+    const [showCreateProduct,setShowCreateProduct] = useState(false)
     // ADD TO CART 
     const moveToCart = (item)=>{
         const check = product.find(itm => itm?.id === item?.id)
@@ -61,10 +122,30 @@ const Context = ({children})=>{
         setProduct(updatedProducts);
         setFavorite(updatedFavorites);
     };
+    const handleMarketTab = (text)=>{
+        setMarketTab(text)
+    }
+    const handleCreateProduct = ()=>{
+        setShowCreateProduct(true)
+    }
+    const handleCreateSubmit = (title,amount,quantity,author,description,image)=>{
+        setBuyProduct([...buyProduct,{
+            title,
+            amount,
+            quantity,
+            author,
+            image,
+            description,
+            sale: false,
+        }])
+        setShowCreateProduct(false)
+    }
+    const cancelForm = ()=>{
+        setShowCreateProduct(false)
+    }
     
-
     return (
-        <AppContext value={{product,isPending,moveToCart,cartExist,cart,cartId,setCartId,setCart,totalCart,totalPrice,query,setQuery,category,setCategory,delItem,addQuantity,removeQuantity,favorite,totalFavorite,favoriteFn}}>
+        <AppContext value={{showCreateProduct,sellProduct,cancelForm,handleCreateSubmit,handleCreateProduct,product,buyProduct,isPending,moveToCart,cartExist,cart,cartId,setCartId,setCart,totalCart,totalPrice,query,setQuery,category,setCategory,delItem,addQuantity,removeQuantity,favorite,totalFavorite,favoriteFn,marketTab,handleMarketTab}}>
             {children}
         </AppContext>
     )

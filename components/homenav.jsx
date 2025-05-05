@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const HomeNav = () => {
     return ( 
-        <div className="bg-black/80 w-full p-5 py-8 h-[50px] fixed shadow-sm z-10 flex items-center justify-between ">
+        <div className="bg-transparent backdrop-blur-5xl w-full p-5 py-8 h-[50px] sticky top-0 shadow-sm z-10 flex items-center justify-between ">
             <div className="text-2xl">
                 <p className="font-semibold md:text-4xl lg:text-5xl ">Re<span className="text-yellow-700">o</span>wn</p>
             </div>

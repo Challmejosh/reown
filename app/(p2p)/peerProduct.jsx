@@ -1,12 +1,12 @@
 'use client'
 import { useContext, useState } from "react";
 import { FaHeart, FaPlus } from "react-icons/fa";
-import { AppContext } from "./context";
 import Link from "next/link";
 import {AnimatePresence, motion} from 'framer-motion';
+import { AppContext } from "@/components/context";
 
 
-const Products = ({ product }) => {
+const ProductPeer = ({ product }) => {
     const { moveToCart, favoriteFn, isPending, cartId, cartExist } = useContext(AppContext);
     const [favoriteMessages, setFavoriteMessages] = useState(null);
 
@@ -31,10 +31,10 @@ const Products = ({ product }) => {
             <div className={`${product?.length <= 0 && 'h-screen'} grid grid-cols-2 justify-center sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3`}>
                 {isPending ? (
                     <>
-                        {product?.map((item) => (
+                        {product?.map((item,index) => (
                             <motion.div 
                                 className="bg-white relative flex flex-col justify-center gap-2 p-5 rounded-2xl w-full xl:w-[220px] h-[220px]"
-                                key={item?.id}
+                                key={index}
                                 initial={{ opacity: 0, y: -30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 1,delay: item.id*0.2 }}
@@ -97,7 +97,7 @@ const Products = ({ product }) => {
                                     <div className="w-full flex items-center justify-center">
                                         <motion.img 
                                         whileHover={{ scale: 1.1 }}
-                                        src={item?.category?.image} alt="" className="w-full h-[120px]" />
+                                        src={item?.image} alt="" className="w-full h-[120px]" />
                                     </div>
                                     <Link href={`/detail/${item?.id}`} className="flex flex-col items-start">
                                         <p className="text-xs line-clamp-1 font-semibold">{item?.title}</p>
@@ -161,4 +161,4 @@ const Products = ({ product }) => {
     );
 }
 
-export default Products;
+export default ProductPeer;
