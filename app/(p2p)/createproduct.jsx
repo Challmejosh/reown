@@ -31,17 +31,13 @@ const CreateProduct = ({submit}) => {
             data.append('file', file)
             data.append('upload_preset',presetName)
             data.append('cloud_name',cloudName)
-            console.log(data)
-            console.log(cloudName)
             const uploadImage = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,{
                 method: "POST",
                 body: data
             })
             console.log(uploadImage)
             const imageObj = await uploadImage.json()
-            console.log(imageObj)
             const imageUrl = imageObj.url
-            console.log(imageUrl)
             setImage(imageUrl)
         }
     }
