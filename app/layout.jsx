@@ -5,7 +5,6 @@ import { Context } from "@/components/context";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import Footer from "@/components/footer";
-import { redirect } from "next/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
