@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 const CreateProduct = () => {
     const {cancelForm} = useContext(AppContext)
-    const [title,setName] = useState('')
+    const [title,setTitle] = useState('')
     const [amount,setAmount] = useState('')
     const [quantity,setQuantity] = useState('')
     const [description,setDescription] = useState('')
@@ -50,8 +50,12 @@ const CreateProduct = () => {
     const key=2
     const onSubmit = async (e,title,amount,quantity,description,image)=>{
         e.preventDefault();
-        alert("good")
         createPost(title,amount,quantity,description,image)
+        setTitle("")
+        setAmount("")
+        setQuantity("")
+        setDescription("")
+        setImage(null)
     }
     return ( 
         <AnimatePresence key={key} mode='wait'>
@@ -69,7 +73,7 @@ const CreateProduct = () => {
                     <label className="cursor-pointer" htmlFor="image">{uploadImage}</label>
                 </div>
                 <input required id="image" type="file" hidden accept='image/*' onChange={(e)=>handleImage(e)} className="" />
-                <input required type="text" value={title} onChange={(e)=>setName(e.target.value)} placeholder="item title..." className="w-full rounded-md py-2 px-3 bg-slate-50 " />
+                <input required type="text" value={title} onChange={(e)=>setTitle(e.target.value)} placeholder="item title..." className="w-full rounded-md py-2 px-3 bg-slate-50 " />
                 <input required type="text" value={amount} onChange={(e)=>setAmount(e.target.value)} placeholder="Amount" inputMode="numeric" className="w-full rounded-md py-2 px-3 bg-slate-50" />
                 <input required type="text" value={quantity} onChange={(e)=>setQuantity(e.target.value)} placeholder="quantity" inputMode="numeric" className="w-full rounded-md py-2 px-3 bg-slate-50" />
                 <textarea required type="text" value={description} onChange={(e)=>setDescription(e.target.value)} placeholder="description" className="w-full rounded-md py-2 px-3 bg-slate-50" />

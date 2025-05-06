@@ -40,7 +40,7 @@ const Market = ({posts,seller,email}) => {
                                     <div className="flex flex-col items-start">
                                         <p className="text-xs line-clamp-1 font-semibold">{item?.title}</p>
                                         <p className="text-xs line-clamp-2 font-semibold">{item?.description}</p>
-                                        <p className="text-xs ">${item?.amount}</p>
+                                        <p className="text-xs ">NGN {item?.amount}</p>
                                     </div>
                                     <div className="flex w-full items-center gap-5 justify-end ">
                                         {/* <div className="w-full rounded-md flex items-center justify-center text-white text-center bg-purple-400 ">View</div> */}

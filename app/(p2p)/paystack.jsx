@@ -23,7 +23,7 @@ const PeerPaystack = ({email,amount,setShow}) => {
             email: email,
             amount: amount * 100,
             publicKey: 'pk_test_ee35b8f44c715c5fffad4db74ae73ebf2c8cd566',
-             ref: "unique-transaction-ref-" + new Date().getTime(),
+            //  ref: "unique-transaction-ref-" + new Date().getTime(),
             currency: "NGN",
             text: "confirm",
             onSuccess:()=> success(),

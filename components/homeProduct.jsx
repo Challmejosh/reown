@@ -19,7 +19,7 @@ const HomeProduct = ({product,isPending}) => {
                     </div>
                     <div className="flex flex-col items-start ">
                         <p className="text-xs line-clamp-1 font-semibold">{item?.title}</p>
-                        <p className="text-xs ">${item?.price}</p>
+                        <p className="text-xs ">NGN {item?.price}</p>
                     </div>
                 </div>
             </div>

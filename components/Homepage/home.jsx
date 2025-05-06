@@ -1,9 +1,9 @@
 'use client'
 import { useContext, useState } from "react";
 import HomeNav from "../homenav";
-import HomeProduct from "../homeProduct";
 import Category from "./category";
 import { AppContext } from "../context";
+import DefaultHome from "../defaultHome";
 
 
 
@@ -21,20 +21,20 @@ const HomeLayout = () => {
                 { !tab ?
                 <>
                     <h1 className="font-semibold text-lg leading-[34px] " >Clothes</h1>
-                    <HomeProduct product={product.filter(item => item?.category?.name === 'Clothes')} isPending={isPending} />
+                    <DefaultHome product={product.filter(item => item?.category?.name === 'Clothes')} isPending={isPending} />
                     <h1 className="font-semibold text-lg leading-[34px] " >Electronics</h1>
-                    <HomeProduct product={product.filter(item => item?.category?.name === 'Electronics')} isPending={isPending} />
+                    <DefaultHome product={product.filter(item => item?.category?.name === 'Electronics')} isPending={isPending} />
                     <h1 className="font-semibold text-lg leading-[34px] " >Furnitures</h1>
-                    <HomeProduct product={product.filter(item => item?.category?.name === 'Furniture')} isPending={isPending} />
+                    <DefaultHome product={product.filter(item => item?.category?.name === 'Furniture')} isPending={isPending} />
                     <h1 className="font-semibold text-lg leading-[34px] " >Shoes</h1>
-                    <HomeProduct product={product.filter(item => item?.category?.name === 'Shoes')} isPending={isPending} />
+                    <DefaultHome product={product.filter(item => item?.category?.name === 'Shoes')} isPending={isPending} />
                     <h1 className="font-semibold text-lg leading-[34px] " >Miscellaneous</h1>
-                    <HomeProduct product={product.filter(item => item?.category?.name === 'Miscellaneous')} isPending={isPending} />
+                    <DefaultHome product={product.filter(item => item?.category?.name === 'Miscellaneous')} isPending={isPending} />
                 </>
                     : 
                     <>
                     <h1 className="font-semibold text-lg"> Best of {tab} </h1>
-                    <HomeProduct product={filter} isPending={isPending} />
+                    <DefaultHome product={filter} isPending={isPending} />
                     </>
                 }
             </div>

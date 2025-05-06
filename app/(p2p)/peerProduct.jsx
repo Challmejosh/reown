@@ -25,7 +25,8 @@ const ProductPeer = ({ product }) => {
                                     </div>
                                     <div className="flex flex-col items-start">
                                         <p className="text-xs line-clamp-1 font-semibold">{item?.title}</p>
-                                        <p className="text-xs ">${item?.amount}</p>
+                                        <p className="text-xs line-clamp-2 font-semibold">{item?.description}</p>
+                                        <p className="text-xs ">NGN {item?.amount}</p>
                                     </div>
                                 </div>
                             </motion.div>

@@ -101,7 +101,7 @@ const Products = ({ product }) => {
                                     </div>
                                     <Link href={`/detail/${item?.id}`} className="flex flex-col items-start">
                                         <p className="text-xs line-clamp-1 font-semibold">{item?.title}</p>
-                                        <p className="text-xs ">${item?.price}</p>
+                                        <p className="text-xs ">NGN {item?.price}</p>
                                     </Link>
                                 </div>
                             </motion.div>
