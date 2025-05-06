@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Context } from "@/components/context";
 import { auth } from "@/auth";
-import { redirect } from "next/navigation";
 import Footer from "@/components/footer";
 
 const geistSans = Geist({
@@ -23,9 +22,6 @@ export const metadata = {
 
 export default async function RootLayout({children}) {
   const session = (await auth())
-  if(session){
-    redirect("/homepage")
-  }
   return (
     <html lang="en">
       <body
