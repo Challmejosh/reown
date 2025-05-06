@@ -4,6 +4,7 @@ import "./globals.css";
 import { Context } from "@/components/context";
 import { auth } from "@/auth";
 import Footer from "@/components/footer";
+import { redirect } from "next/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +23,9 @@ export const metadata = {
 
 export default async function RootLayout({children}) {
   const session = (await auth())
-
+  if(session){
+    redirect("/homepage")
+  }
   return (
     <html lang="en">
       <body
