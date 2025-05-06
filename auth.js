@@ -13,7 +13,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
       try {
         const oauthId = user.email;
-        const existingAuthor = await writeClient.fetch(
+        const existingAuthor = await writeClient.writeClient.withConfig({useCdn:false}).fetchithConfig({useCdn:false}).fetch(
           `*[_type == "author" && oauthId == $oauthId][0]`,
           { oauthId }
         );
@@ -43,7 +43,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
 
       try {
-        const sanityId = await writeClient.fetch(
+        const sanityId = await writeClient.withConfig({useCdn:false}).fetch(
           `*[_type == "author" && email == $email][0]._id`,
           { email: session.user.email }
         );
