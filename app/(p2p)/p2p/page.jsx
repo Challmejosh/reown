@@ -12,20 +12,17 @@ const PeerToPeer = async () => {
         title,
         author,
         authorImg,
-        amount
+        amount,
+        image,
+        slug
         }`
     const email = session?.user?.email
     const getSeller = await client.withConfig({useCdn: false}).fetch(sellerPost, { email })
-    const onSubmit = async (e,title,amount,quantity,description,image)=>{
-        "use server"
-        e.preventDefault();
-        alert("good")
-        createPost(title,amount,quantity,description,image)
-    }
+
     return ( 
         <div className="relative min-h-screen bg-purple-200 w-full flex flex-col items-center justify-start ">
             <Nav />
-            <Market posts={posts} seller={getSeller} submit={onSubmit} />
+            <Market posts={posts} seller={getSeller} email={email} />
         </div>
      );
 }

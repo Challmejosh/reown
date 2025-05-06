@@ -4,7 +4,9 @@ export const allPost = defineQuery(`*[_type=="post"]{
   title,
   author,
     authorImg,
-    amount
+    amount,
+    image,
+    slug
 }`)
 export const AUTHOR_BY_GOOGLE_ID_QUERY = defineQuery(`
   *[_type == "author" & id == $id ][0]{

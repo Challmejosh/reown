@@ -8,7 +8,7 @@ import { AppContext } from "./context";
 const Navigation = () => {
     const {totalCart,totalFavorite} = useContext(AppContext)
     return ( 
-        <div className="fixed flex items-center justify-center w-full p-3 text-white sm:hidden z-20 bottom-5">
+        <div className="fixed flex items-center justify-center w-full p-3 text-white md:hidden z-20 bottom-5">
             <div className="flex mx-5 gap-3 w-full items-center rounded-lg z-20 bg-black/90 justify-between px-2 ">
             <Link href='/homepage'>
                 <FaHome />

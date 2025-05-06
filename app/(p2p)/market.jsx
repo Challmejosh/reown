@@ -1,14 +1,17 @@
 'use client'
 
 import { AppContext } from "@/components/context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CreateProduct from "./createproduct";
 import { AnimatePresence,motion } from "framer-motion";
 import ProductPeer from "./peerProduct";
 import Link from "next/link";
+import PeerPaystack from "./paystack";
 
-const Market = ({posts,submit,seller}) => {
+const Market = ({posts,seller,email}) => {
     const {marketTab,showCreateProduct,buyProduct,sellProduct} = useContext(AppContext)
+    const [show,setShow] = useState(false)
+    const [amt,setAmt] = useState(null)
     return ( 
         <div className="flex w-full p-5 items-start gap-5 justify-center ">
             {marketTab === 'Buy' && (
@@ -38,17 +41,18 @@ const Market = ({posts,submit,seller}) => {
                                         <p className="text-xs line-clamp-1 font-semibold">{item?.title}</p>
                                         <p className="text-xs line-clamp-2 font-semibold">{item?.description}</p>
                                         <p className="text-xs ">${item?.amount}</p>
-                                        <p className="text-xs ">${item?.amount}</p>
                                     </div>
-                                    <div className="flex w-full items-center gap-5 justify-between ">
-                                        <Link href={`/p2p/product/${item?.title}`} className="w-full bg-purple-400 ">View</Link>
-                                        <div className="w-full bg-purple-400 ">Buy</div>
+                                    <div className="flex w-full items-center gap-5 justify-end ">
+                                        {/* <div className="w-full rounded-md flex items-center justify-center text-white text-center bg-purple-400 ">View</div> */}
+                                        <div onClick={()=>{
+                                            setShow(true)
+                                            setAmt(item?.amount)
+                                        }} className="w-full cursor-pointer rounded-md flex items-center justify-center text-white text-center bg-purple-400 ">Buy</div>
                                     </div>
                                 </div>
                             </motion.div>
                         ))}
                     </>
-                    {/* <Products product={buyProduct} /> */}
                 </div>
             )}
             {marketTab === 'Sell' && (
@@ -57,8 +61,11 @@ const Market = ({posts,submit,seller}) => {
                 // </div>
             )}
             {showCreateProduct && marketTab === 'Sell' && (
-                <CreateProduct submit={submit} />
+                <CreateProduct />
             )}
+            {show && (
+                <PeerPaystack show={show} amount={amt} email={email} setShow={setShow} />
+            ) }
         </div>
      );
 }

@@ -40,5 +40,14 @@ export default {
         title: "Author",
         type: "reference",
         }),
+        defineField({
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+              source: 'title',
+              maxLength: 96,
+            },
+        })
     ],
 }

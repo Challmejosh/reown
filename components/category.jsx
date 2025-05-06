@@ -18,7 +18,7 @@ const Category = () => {
         <div className="my-5 flex flex-col items-center justify-center ">
             <Swiper 
                     loop={true} modules={[Navigation,Pagination]} spaceBetween={0} slidesPerView={1} pagination={{clickable:true}} autoplay={{delay: 200 }}
-                className="w-full h-[200px]">
+                className="w-full my-3 h-[200px]">
                     {product?.map((item) => (
                         <SwiperSlide key={item.id} className="w-full h-[200px] relative">
                             <img src={item?.images} alt="" className="w-full h-full object-cover" />

@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Context } from "@/components/context";
 import { auth } from "@/auth";
-import Link from "next/link";
 import Footer from "@/components/footer";
 
 const geistSans = Geist({
@@ -27,10 +26,9 @@ export default async function RootLayout({children}) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex flex-col antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex flex-col min-h-screen justify-between antialiased`}
       >
         <Context>
-        <Link href="/p2p">Pear to Peer</Link>
           {children}
         <Footer />
         </Context>

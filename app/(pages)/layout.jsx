@@ -15,12 +15,12 @@ const Layout = async ({children}) => {
     return ( 
         <div className="bg-[#F6F7F9] flex flex-col gap-5 ">
             <Navigation  />
-            <MobileNavbar session={true}/>
-            <Navbar session={true} />
+            <MobileNavbar session={session}/>
+            <Navbar session={session} />
             <div className="sm:hidden flex ">
               <SearchBar />
             </div>
-            <div className="mx-3">
+            <div className="mt-3 mx-3">
                 <Category />
             </div>
             <div className="flex h-fit flex-col text-black bg-purple-200 scrollbar">

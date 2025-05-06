@@ -29,11 +29,13 @@ const Navbar = ({session}) => {
                 <Link href='/favorite' className="">
                     Favorites
                 </Link>
+                <Link href='/p2p' className="">
+                    P2P
+                </Link>
             </div>
-            <Link href={`/${session?.user?.username}`} className="flex items-center justify-center ">
-                {console.log(session)}
+            <div className="flex items-center justify-center ">
                 <img src={session?.user?.image} alt="" className="flex w-[80px] h-[50px] object-cover rounded-full" />
-            </Link>
+            </div>
         </motion.div>
      );
 }
