@@ -34,7 +34,7 @@ const Category = ({tab}) => {
                 className="w-full h-[200px]">
                     {product?.map((item) => (
                         <SwiperSlide key={item.id} className="w-full h-[200px] relative">
-                            <img src={item?.images} alt="" className="w-full h-full object-cover" />
+                            <img src={item?.image} alt="" className="w-full h-full object-cover" />
                         </SwiperSlide>
                     ))}
                 </Swiper>

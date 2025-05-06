@@ -8,7 +8,9 @@ import { SwiperSlide,Swiper } from "swiper/react";
 import { Navigation, Pagination } from 'swiper/modules';
 
 const DefaultHome = ({product,isPending}) => {
-
+    const handleClick = ()=>{
+        alert('sign in')
+    }
     return ( 
         <Swiper 
         modules={[Navigation,Pagination]} spaceBetween={30} slidesPerView={5} pagination={{clickable:true}} 
@@ -18,12 +20,12 @@ const DefaultHome = ({product,isPending}) => {
         {product?.map(item=>(
             <SwiperSlide className={` bg-white flex flex-col justify-center gap-2 p-5 rounded-2xl w-full xl:w-[220px] h-[220px]`}key={item?.id}>
                 <div className="flex items-center justify-end gap-5 ">
-                    <FaHeart onClick={alert("sign in")} className={`${item?.favorite ? "text-red-600" : ""} cursor-pointer`} />
-                    <FaPlus onClick={alert('sign in')} className="cursor-pointer" />
+                    <FaHeart onClick={handleClick} className={`${item?.favorite ? "text-red-600" : ""} cursor-pointer`} />
+                    <FaPlus onClick={handleClick} className="cursor-pointer" />
                 </div>
                 <div className="flex items-start justify-center flex-col gap-2 ">
                     <div className="w-full flex items-center justify-center ">
-                        <motion.img 
+                        <motion.img
                         whileHover={{scale:1.1}}
                         src={item?.category?.image} alt="" className="w-full h-[120px] " />
                     </div>
