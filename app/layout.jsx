@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Context } from "@/components/context";
 import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 import Footer from "@/components/footer";
 import { redirect } from "next/navigation";
 
